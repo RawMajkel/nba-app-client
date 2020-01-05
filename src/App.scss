@@ -1,0 +1,46 @@
+/* override bootstrap styles */
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 300 !important;
+}
+
+.navbar {
+    padding: .5rem 0 !important;
+}
+
+/* material styles */
+.material {
+    &-bg-def {
+        background-color: #000;
+    }
+    
+    &-bg-surf {
+        background-color: #1F1F1F;
+    }
+
+    &-color-def {
+        color: #E0E0E0;
+    }
+
+    &-color-surf {
+        color: #A4A4A4;
+    }
+
+    &-color-surf-2 {
+        color: #E1E1E1;
+    }
+}
+
+/* header - navbar */
+.header {
+    margin-top: 20px;
+    margin-bottom: 70px;
+}
+
+.nav-link {
+    color: inherit !important;
+    transition: color 300ms ease;
+
+    &:hover {
+        color: #fff !important;
+    }
+}
