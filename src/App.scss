@@ -1,6 +1,12 @@
+/* global */
+body {
+    min-height: 100vh;
+}
+
 /* override bootstrap styles */
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     font-weight: 300 !important;
+    padding-bottom: 15px !important;
 }
 
 .navbar {
@@ -10,7 +16,7 @@
 /* material styles */
 .material {
     &-bg-def {
-        background-color: #000;
+        background-color: #121212;
     }
     
     &-bg-surf {
@@ -27,6 +33,18 @@
 
     &-color-surf-2 {
         color: #E1E1E1;
+    }
+}
+
+/* content */
+.content {
+
+    ul, ol {
+        padding-left: 20px;
+    }
+
+    ul {
+        list-style: disc;
     }
 }
 

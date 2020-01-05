@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import './teamList.scss';
-import TeamList from './teamList';
+import './Team.scss';
 
-const TeamList = () => {
+function Team() {
 
     const [team, setTeam] = useState([]);
 
@@ -23,4 +22,4 @@ const TeamList = () => {
     </>;
 };
 
-export default TeamList;
+export default Team;
