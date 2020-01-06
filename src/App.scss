@@ -13,6 +13,20 @@ body {
     padding: .5rem 0 !important;
 }
 
+p:last-child {
+    margin-bottom: 0!important;
+}
+
+body .table thead th {
+    border-top: none !important;
+    border-width: 1px !important;
+    border-color: #555 !important;
+}
+
+body .table thead {
+    background-color: #1F1F1F !important;
+}
+
 /* material styles */
 .material {
     &-bg-def {
@@ -21,6 +35,10 @@ body {
     
     &-bg-surf {
         background-color: #1F1F1F;
+    }    
+
+    &-bg-surf-2 {
+        background-color: #292929;
     }
 
     &-color-def {
@@ -48,10 +66,12 @@ body {
     }
 }
 
-/* header - navbar */
+/* header - navbar - footer */
+$gutter: 70px;
+
 .header {
     margin-top: 20px;
-    margin-bottom: 70px;
+    margin-bottom: $gutter;
 }
 
 .nav-link {
@@ -61,4 +81,74 @@ body {
     &:hover {
         color: #fff !important;
     }
+}
+
+.footer {
+    margin-top: $gutter;
+    margin-bottom: 20px;
+    padding: 15px 0;
+}
+
+/* tiles */
+.tiles {
+    $gutter: 15;
+    $padding: 28px;
+
+    &__row {
+        margin-left: -#{$gutter}px;
+        margin-right: -#{$gutter}px;
+    }
+
+    &__img-container {
+        background-color: rgba(134, 181, 252, 0.12);
+        padding-top: $padding;
+    }
+
+    &__content {
+        padding: $padding;
+    }
+
+    &__desc {
+        border-bottom: 1px solid rgba(255,255,255, .1);
+        padding-bottom: #{$padding - 10px};
+        margin-bottom: $padding;
+    }
+
+    &__table--first {
+        margin-bottom: 40px;
+    }
+
+    &__info {
+        margin-bottom: 6px;
+        line-height: 1.8;
+    }
+
+    &__name {
+        padding-bottom: 0 !important;
+    }
+
+    &__item {
+        max-width: calc(100% / 3 - #{$gutter * 2}px);
+        margin: #{$gutter}px;
+    }
+
+    &__stats,
+    &__playersList {
+        padding: $padding;
+    }
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    $size: 13px;
+    width: $size;
+    height: $size;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #191919;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background-color: #333;
 }
