@@ -73,7 +73,7 @@ function Player({id}) {
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Weight:</strong> {player.weightPounds} lb ({Math.round(player.weightKilograms * 100) / 100} kg)</p>
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">From:</strong> {player.college === " " ? "No College" : player.college}</p>
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Country:</strong> {player.country}</p>
-                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Experience:</strong> {player.yearsPro}th Season</p>
+                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Experience:</strong> {player.yearsPro + 1}th Season</p>
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Draft:</strong> { isDrafted(player) ? `${player.draftYear}: Rd ${player.draftRound}, Pk ${player.draftPick} (${draftTeam.abbreviation})` : "Undrafted" }</p>
                     </div>
                 </div>
