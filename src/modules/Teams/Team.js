@@ -19,13 +19,6 @@ function Team({id}) {
         })();
     }, []);
     
-    function fixTeamNames(name, nickName) {
-        if (/\s/.test(name)) {
-            return name;
-        }
-        return `${name} ${nickName}`;
-    }
-    
     return (
         <div className="tiles">
             <div className="container">
@@ -34,7 +27,7 @@ function Team({id}) {
                 </div>
                 <div className="tiles__content w-100">
                     <div className="tiles__desc">
-                        <h2 className="tiles__name material-color-def">{ fixTeamNames(team.name, team.nickName) }</h2>
+                        <h2 className="tiles__name material-color-def">{team.name} {team.nickName}</h2>
                         <p className="tiles__more material-color-surf">{team.abbreviation} &#8226; {team.conference} Conference &#8226; {team.division} Division</p>
                     </div>
                     <div className="tiles__info-container">

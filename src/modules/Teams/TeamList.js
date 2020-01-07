@@ -16,7 +16,7 @@ function TeamList() {
     return (
         <div className="tiles">
             <div className="container">
-                <h1 className="material-color-def">List of all NBA team</h1>
+                <h1 className="material-color-def">List of all NBA teams</h1>
                 <div className="tiles__row d-flex flex-row flex-wrap justify-content-start align-items-start">
                     {teams.map(team => <TeamTile
                         id={team.id}

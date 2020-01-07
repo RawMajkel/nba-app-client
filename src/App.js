@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 import {useRoutes, A} from 'hookrouter'
 import Home from './modules/Home/Home'
 import PlayerList from './modules/Players/PlayerList'
@@ -24,6 +25,14 @@ function copyYears(devYear) {
 function App() {
 
     const routeResult = useRoutes(routes);
+    const [appInfo, setAppInfo] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const appInfo = await axios.get(`https://localhost:5001/api/info`);
+            setAppInfo(appInfo.data);
+        })();
+    }, []);
 
     return (
         <div className="App">
@@ -63,6 +72,7 @@ function App() {
                 <div className="container">
                     <div className="footer__content">
                         <p className="material-color-surf">NbaApp &copy; { copyYears(2019) } | Michał Droździk</p>
+                        <p className="material-color-surf"><strong>Last database update</strong>: {appInfo.updateDate}</p>
                     </div>
                 </div>
             </div>

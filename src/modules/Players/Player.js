@@ -40,18 +40,8 @@ function Player({id}) {
         return <img src={url} alt={alt} className="tiles__img lazyload d-block mx-auto img-fluid" />;
     }
 
-    function fixTeamNames(team) {
-        if (/\s/.test(team.name)) {
-            return team.name;
-        }
-        return `${team.name} ${team.nickName}`;
-    }
-
     function isDrafted(player) {
-        if(player.draftYear) {
-            return true;
-        }
-        return false;
+        return player.draftYear ? true : false;
     }
 
     return (
@@ -64,16 +54,16 @@ function Player({id}) {
                     <div className="tiles__desc">
                         <h2 className="tiles__name material-color-def">{player.firstName} {player.lastName}</h2>
                         <p className="tiles__more material-color-surf">
-                            <a href={`/team/${currentTeam.id}`}>{ fixTeamNames(currentTeam) }</a> &#8226; #{player.jerseyNumber} &#8226; {player.position}
+                        <a href={`/team/${currentTeam.id}`}>{currentTeam.name} {currentTeam.nickName}</a> &#8226; #{player.jerseyNumber} &#8226; {player.position}
                         </p>
                     </div>
                     <div className="tiles__info-container">
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Born:</strong> {player.dateOfBirth} ({player.age} years)</p>
-                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Height:</strong> {player.heightFeet} ft {Math.round(player.heightInches)} in ({Math.round(player.heightMetric * 100) / 100} m)</p>
-                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Weight:</strong> {player.weightPounds} lb ({Math.round(player.weightKilograms * 100) / 100} kg)</p>
-                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">From:</strong> {player.college === " " ? "No College" : player.college}</p>
+                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Height:</strong> {player.heightFeet} ft {player.heightInches} in ({player.heightMetric} m)</p>
+                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Weight:</strong> {player.weightPounds} lb ({player.weightKilograms} kg)</p>
+                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">From:</strong> {player.college}</p>
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Country:</strong> {player.country}</p>
-                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Experience:</strong> {player.yearsPro + 1}th Season</p>
+                        <p className="tiles__info material-color-surf"><strong className="tiles__strong">Experience:</strong> {player.yearsPro}th Season</p>
                         <p className="tiles__info material-color-surf"><strong className="tiles__strong">Draft:</strong> { isDrafted(player) ? `${player.draftYear}: Rd ${player.draftRound}, Pk ${player.draftPick} (${draftTeam.abbreviation})` : "Undrafted" }</p>
                     </div>
                 </div>
