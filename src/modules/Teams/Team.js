@@ -26,7 +26,7 @@ function Team({id}) {
         <div className="tiles">
             <div className="container">
                 <div className="tiles__img-container w-100">
-                    <img src={`https://www.nba.com/assets/logos/teams/primary/web/${team.abbreviation}.svg`} alt={`${team.name} ${team.nickName}`} className="tiles__img lazyload d-block mx-auto img-fluid" />
+                    <img src={`https://www.nba.com/assets/logos/teams/primary/web/${team.abbreviation}.svg`} alt={`${team.name} ${team.nickName}`} className="tiles__img d-block mx-auto img-fluid" />
                 </div>
                 <div className="tiles__content w-100">
                     <div className="tiles__desc">

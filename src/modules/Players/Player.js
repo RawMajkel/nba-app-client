@@ -22,8 +22,6 @@ function Player({id}) {
 
                 const fetchedPlayerStats = await axios.get(`https://localhost:5001/api/player-stats/${id}`);
                 setStats(fetchedPlayerStats.data);
-
-
             } catch (err) {
                 throw err;
             }
@@ -39,7 +37,7 @@ function Player({id}) {
         if(http.status !== 200) {
             url = "https://via.placeholder.com/260x190";
         }
-        return <img src={url} alt={alt} className="tiles__img lazyload d-block mx-auto img-fluid" />;
+        return <img src={url} alt={alt} className="tiles__img d-block mx-auto img-fluid" />;
     }
 
     function isDrafted(player) {
@@ -47,7 +45,7 @@ function Player({id}) {
     }
 
     return (
-        <div className="tiles" data-aos="fade-up" data-aos-duration="1000">
+        <div className="tiles">
             <div className="container">
                 <div className="tiles__img-container w-100">
                     { player && player.nbaNetID && addImage(`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.nbaNetID}.png`, `${player.firstName} ${player.lastName}`) }

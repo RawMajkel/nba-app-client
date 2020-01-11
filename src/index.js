@@ -5,9 +5,6 @@ import * as serviceWorker from './serviceWorker'
 import 'reset-css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import '@fortawesome/fontawesome-free/css/all.css'
-import 'lazysizes'
-import 'aos'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
