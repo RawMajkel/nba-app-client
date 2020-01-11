@@ -3,34 +3,36 @@ import axios from 'axios'
 
 function Player({id}) {
 
-    const [player, setPlayer] = useState([]);
-    const [currentTeam, setCurrentTeam] = useState([]);
-    const [draftTeam, setDraftTeam] = useState([]);
-    const [stats, setStats] = useState([]);
+    const [player, setPlayer] = useState({});
+    const [currentTeam, setCurrentTeam] = useState({});
+    const [draftTeam, setDraftTeam] = useState({});
+    const [stats, setStats] = useState({});
 
     useEffect(() => {
         (async () => {
-            await axios.get(`https://localhost:5001/api/player/${id}`).then(player => {
-                setPlayer(player.data);
+            try {
+                const fetchedPlayer = await axios.get(`https://localhost:5001/api/player/${id}`);
+                setPlayer(fetchedPlayer.data);
 
-                axios.get(`https://localhost:5001/api/team/${player.data.currentTeam}`).then(cTeam => {
-                    setCurrentTeam(cTeam.data);
-                });
+                const fetchedCurrentTeam = await axios.get(`https://localhost:5001/api/team/${fetchedPlayer.data.currentTeam}`);
+                setCurrentTeam(fetchedCurrentTeam.data);
 
-                axios.get(`https://localhost:5001/api/team/${player.data.draftTeam}`).then(dTeam => {
-                    setDraftTeam(dTeam.data);
-                });
+                const fetchedDraftTeam = await axios.get(`https://localhost:5001/api/team/${fetchedPlayer.data.draftTeam}`);
+                setDraftTeam(fetchedDraftTeam.data);
 
-                axios.get(`https://localhost:5001/api/player-stats/${id}`).then(stats => {
-                    setStats(stats.data);
-                });
-            });
+                const fetchedPlayerStats = await axios.get(`https://localhost:5001/api/player-stats/${id}`);
+                setStats(fetchedPlayerStats.data);
+
+
+            } catch (err) {
+                throw err;
+            }
         })();
-    }, []);
+    }, [id]);
 
     function addImage(url, alt) {
         const http = new XMLHttpRequest();
-        
+    
         http.open('HEAD', url, false);
         http.send();
 
@@ -41,14 +43,14 @@ function Player({id}) {
     }
 
     function isDrafted(player) {
-        return player.draftYear ? true : false;
+        return Boolean(player.draftYear);
     }
 
     return (
         <div className="tiles" data-aos="fade-up" data-aos-duration="1000">
             <div className="container">
                 <div className="tiles__img-container w-100">
-                    { addImage(`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.nbaNetID}.png`, `${player.firstName} ${player.lastName}`) }
+                    { player && player.nbaNetID && addImage(`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.nbaNetID}.png`, `${player.firstName} ${player.lastName}`) }
                 </div>
                 <div className="tiles__content w-100">
                     <div className="tiles__desc">

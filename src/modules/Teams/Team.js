@@ -4,20 +4,23 @@ import PlayerTile from '../Players/PlayerTile';
 
 function Team({id}) {
 
-    const [team, setTeam] = useState([]);
+    const [team, setTeam] = useState({});
     const [players, setPlayers] = useState([]);
 
     useEffect(() => {
         (async () => {
-            await axios.get(`https://localhost:5001/api/team/${id}`).then(team => {
-                setTeam(team.data);
+            try {
+                const fetchedTeam = await axios.get(`https://localhost:5001/api/team/${id}`);
+                setTeam(fetchedTeam.data);
 
-                axios.get(`https://localhost:5001/api/players/${id}`).then(players => {
-                    setPlayers(players.data);
-                });
-            });
+                const fetchedPlayers = await axios.get(`https://localhost:5001/api/players/${id}`);
+                setPlayers(fetchedPlayers.data);
+
+            } catch (err) {
+                throw err;
+            }
         })();
-    }, []);
+    }, [id]);
     
     return (
         <div className="tiles">
