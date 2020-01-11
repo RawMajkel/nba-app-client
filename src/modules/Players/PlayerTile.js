@@ -4,17 +4,14 @@ function PlayerTile({id, nbaNetID, firstName, lastName, jerseyNumber, position})
 
     function addImage(url, alt) {
         const http = new XMLHttpRequest();
-        let src = url;
         
         http.open('HEAD', url, false);
         http.send();
 
-        console.log("Status: " + http.status);
-
         if(http.status !== 200) {
-            src = "https://via.placeholder.com/260x190";
+            url = "https://via.placeholder.com/260x190";
         }
-        return <img src={src} alt={alt} className="tiles__img lazyload d-block mx-auto img-fluid" />;
+        return <img src={url} alt={alt} className="tiles__img lazyload d-block mx-auto img-fluid" />;
     }
 
     return (
