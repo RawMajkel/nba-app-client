@@ -2,11 +2,9 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import PlayerTile from './PlayerTile'
 import InfiniteScroll from 'react-infinite-scroller'
+import config from '../../config/config'
 
 function PlayerList() {
-
-    const perPage = 15;
-
     const [players, setPlayers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [lastPage, setLastPage] = useState(null);
@@ -14,7 +12,7 @@ function PlayerList() {
 
     useEffect(() => {
         (async () => {
-            const response = await axios.get(`https://localhost:5001/api/players?perPage=${perPage}&page=${currentPage}`);
+            const response = await axios.get(`https://localhost:5001/api/players?perPage=${config.playersPerPage}&page=${currentPage}`);
 
             setPlayers(response.data.players);
             setLastPage(response.data.meta.lastPage);
@@ -25,7 +23,7 @@ function PlayerList() {
     const loadFunc = async () => {
         if(hasMoreItems) {
             let newPage = currentPage + 1;
-            const response = await axios.get(`https://localhost:5001/api/players?perPage=${perPage}&page=${newPage}`);
+            const response = await axios.get(`https://localhost:5001/api/players?perPage=${config.playersPerPage}&page=${newPage}`);
             const newPlayers = response.data.players;
 
             setCurrentPage(newPage);
