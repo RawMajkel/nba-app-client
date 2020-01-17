@@ -9,7 +9,7 @@ function TeamList() {
     useEffect(() => {
         (async () => {
             const teams = await axios.get('https://localhost:5001/api/teams');
-            setTeams(teams.data);
+            setTeams(teams.data.teams);
         })();
     }, []);
 

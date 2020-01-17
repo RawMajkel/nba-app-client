@@ -1,3 +1,3 @@
 export default {
-    playersPerPage: 15
+    playersPerPage: 12
 }
